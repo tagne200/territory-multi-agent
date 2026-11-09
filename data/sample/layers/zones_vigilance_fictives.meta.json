@@ -1,0 +1,23 @@
+{
+  "name": "Zones de vigilance inondation (fictives)",
+  "theme": "flood_hazard",
+  "description": "Zones de vigilance fictives issues d'une « modélisation simplifiée » imaginaire.",
+  "provenance": "Données FICTIVES générées par scripts/generate_sample_data.py — aucune valeur réelle",
+  "date": "2019-06",
+  "license": "CC0-1.0 (données fictives créées pour ce prototype)",
+  "scale_denominator": 25000,
+  "status": "provisoire",
+  "id_attribute": "id",
+  "label_attribute": "alea",
+  "expected_attributes": [
+    "alea",
+    "statut",
+    "date_ref"
+  ],
+  "gpkg_layer": "zones_vigilance",
+  "is_fictitious": true,
+  "known_limitations": [
+    "Couche fictive au statut « provisoire » (choisi pour tester les avertissements).",
+    "Échelle de saisie 1/25 000 : ne pas interpréter les limites à l'échelle parcellaire."
+  ]
+}

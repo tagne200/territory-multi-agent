@@ -1,0 +1,20 @@
+{
+  "name": "Cours d'eau (fictif)",
+  "theme": "hydrography",
+  "description": "Tracés linéaires fictifs de cours d'eau.",
+  "provenance": "Données FICTIVES générées par scripts/generate_sample_data.py — aucune valeur réelle",
+  "date": "2026-11-09",
+  "license": "CC0-1.0 (données fictives créées pour ce prototype)",
+  "scale_denominator": 10000,
+  "status": "fictif — démonstration",
+  "id_attribute": "id",
+  "label_attribute": "nom",
+  "expected_attributes": [
+    "nom",
+    "regime"
+  ],
+  "is_fictitious": true,
+  "known_limitations": [
+    "Tracés schématiques, sans statut réglementaire."
+  ]
+}

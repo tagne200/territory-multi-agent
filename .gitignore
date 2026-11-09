@@ -1,0 +1,27 @@
+# Environnements
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Secrets : ne jamais versionner
+.env
+.env.*
+!.env.example
+
+# Outils
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Rapports générés (seul .gitkeep est versionné ; les exemples sont dans examples/)
+reports/*
+!reports/.gitkeep
+
+# Fichiers temporaires SIG
+*.gpkg-wal
+*.gpkg-shm

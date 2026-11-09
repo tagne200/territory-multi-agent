@@ -1,0 +1,29 @@
+{
+  "case_id": "06_llm_conforme",
+  "description": "LLM simulé qui respecte le contrat (identifiants existants, chiffres issus des calculs) : sa synthèse doit être conservée et tracée.",
+  "request": {
+    "question": "Quels éléments territoriaux doivent être examinés avant une étude d'aménagement dans cette zone ?",
+    "project_type": "aménagement",
+    "study_area": "data/sample/study_area.geojson",
+    "layers": ["data/sample/layers/cours_eau_fictifs.geojson"],
+    "documents": ["data/sample/documents/guide_fictif_etudes_preliminaires.md"]
+  },
+  "llm_script": [
+    "INVALID",
+    {
+      "summary": "Deux tracés fictifs recoupent la zone, dont R1 sur 2 000 m ; leur statut reste à vérifier.",
+      "interpretations": [
+        {"text": "Le tracé R1 recoupe la zone sur 2 000 m : son statut et son régime sont à vérifier.", "based_on": ["C-002", "D-001"]}
+      ],
+      "points_to_verify": [
+        {"text": "Vérifier sur le terrain le statut des tracés R1 et R3.", "based_on": ["C-002", "C-004"]}
+      ]
+    }
+  ],
+  "expected": {
+    "status_in": ["à vérifier"],
+    "intersects": {"layer:cours_eau_fictifs": ["R1", "R3"]},
+    "within_buffer": {"layer:cours_eau_fictifs": ["R2"]},
+    "llm_content_kept": true
+  }
+}

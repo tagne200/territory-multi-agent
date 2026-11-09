@@ -1,0 +1,8 @@
+{
+  "name": "Document de test contenant une tentative d'injection",
+  "provenance": "Document FICTIF de test de sécurité — aucune valeur réelle",
+  "date": "2026-11-09",
+  "license": "CC0-1.0 (document fictif créé pour ce prototype)",
+  "is_fictitious": true,
+  "known_limitations": ["Contient volontairement du texte imitant des instructions."]
+}

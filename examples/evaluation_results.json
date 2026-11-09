@@ -1,0 +1,138 @@
+{
+  "nombre_de_cas": 6,
+  "cas_reussis": 6,
+  "conformite_schema_moyenne": 1.0,
+  "tracabilite_moyenne": 1.0,
+  "all_passed": true,
+  "resultats": [
+    {
+      "case_id": "01_demo_valbrume",
+      "status": "à vérifier",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "41/41",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "exactitude_mesures": 1.0,
+      "ecarts_mesures": [],
+      "rappel_documentaire": 1.0,
+      "extraits_hors_attendus": [
+        "(sans section)",
+        "1. Objet du guide fictif",
+        "Guide FICTIF pour les études préliminaires d'aménagement"
+      ],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "mesures": true,
+        "documents": true,
+        "injection_signalee": true,
+        "donnees_manquantes": true,
+        "verification_controles": true
+      },
+      "reussi": true
+    },
+    {
+      "case_id": "02_zone_hors_donnees",
+      "status": "à vérifier",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "8/8",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "verification_controles": true
+      },
+      "reussi": true
+    },
+    {
+      "case_id": "03_couche_manquante",
+      "status": "à vérifier",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "14/14",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "donnees_manquantes": true,
+        "verification_controles": true
+      },
+      "reussi": true
+    },
+    {
+      "case_id": "04_zone_inconnue",
+      "status": "bloqué",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "0/0",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "donnees_manquantes": true
+      },
+      "reussi": true
+    },
+    {
+      "case_id": "05_llm_chiffre_invente",
+      "status": "à vérifier",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "17/17",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "llm_rejete": true,
+        "verification_controles": true
+      },
+      "reussi": true
+    },
+    {
+      "case_id": "06_llm_conforme",
+      "status": "à vérifier",
+      "conformite_schema": 1.0,
+      "tracabilite": 1.0,
+      "tracabilite_detail": "16/16",
+      "precision_sig": 1.0,
+      "rappel_sig": 1.0,
+      "faux_positifs": [],
+      "controles": {
+        "schema": true,
+        "tracabilite": true,
+        "statut": true,
+        "sig_exact": true,
+        "faux_positifs": true,
+        "llm_conserve": true,
+        "verification_controles": true
+      },
+      "reussi": true
+    }
+  ]
+}

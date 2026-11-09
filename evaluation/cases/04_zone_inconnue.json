@@ -1,0 +1,15 @@
+{
+  "case_id": "04_zone_inconnue",
+  "description": "Zone d'étude introuvable : l'analyse doit être bloquée proprement, avec un rapport valide qui l'explique.",
+  "request": {
+    "question": "Quels éléments territoriaux doivent être examinés ?",
+    "study_area": "data/sample/zone_qui_n_existe_pas.geojson",
+    "layers": ["data/sample/layers/cours_eau_fictifs.geojson"],
+    "documents": []
+  },
+  "expected": {
+    "status_in": ["bloqué"],
+    "no_findings": true,
+    "missing_contains": ["Zone d'étude inutilisable"]
+  }
+}

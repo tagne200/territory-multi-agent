@@ -1,0 +1,24 @@
+{
+  "case_id": "02_zone_hors_donnees",
+  "description": "Zone fictive située à 10 km : aucune entité ne doit être détectée (test d'absence de faux positifs).",
+  "request": {
+    "question": "Quels éléments territoriaux doivent être examinés avant une étude d'aménagement dans cette zone ?",
+    "project_type": "aménagement",
+    "study_area": "data/sample/alt_areas/zone_hors_donnees.geojson",
+    "layers": [
+      "data/sample/layers/cours_eau_fictifs.geojson",
+      "data/sample/layers/occupation_sol_fictive.geojson",
+      "data/sample/layers/zones_vigilance_fictives.gpkg"
+    ],
+    "documents": ["data/sample/documents/guide_fictif_etudes_preliminaires.md"]
+  },
+  "expected": {
+    "status_in": ["à vérifier"],
+    "no_findings": true,
+    "must_not_appear": {
+      "layer:cours_eau_fictifs": ["R1", "R2", "R3", "R4"],
+      "layer:zones_vigilance_fictives": ["V1", "V2", "V3"],
+      "layer:occupation_sol_fictive": ["L1", "L2", "L3", "L4", "L5", "L6"]
+    }
+  }
+}

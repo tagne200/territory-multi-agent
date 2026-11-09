@@ -1,0 +1,25 @@
+{
+  "case_id": "03_couche_manquante",
+  "description": "Une couche demandée n'existe pas et aucune couche d'inondation n'est fournie : le rapport doit le signaler sans s'interrompre.",
+  "request": {
+    "question": "Quels éléments territoriaux doivent être examinés avant une étude d'aménagement dans cette zone ?",
+    "study_area": "data/sample/study_area.geojson",
+    "layers": [
+      "data/sample/layers/cours_eau_fictifs.geojson",
+      "data/sample/layers/couche_inexistante.geojson"
+    ],
+    "documents": []
+  },
+  "expected": {
+    "status_in": ["à vérifier"],
+    "intersects": {"layer:cours_eau_fictifs": ["R1", "R3"]},
+    "within_buffer": {"layer:cours_eau_fictifs": ["R2"]},
+    "must_not_appear": {"layer:cours_eau_fictifs": ["R4"]},
+    "missing_contains": [
+      "couche_inexistante.geojson",
+      "Type de projet non précisé",
+      "zones inondables / de vigilance",
+      "Aucun document"
+    ]
+  }
+}

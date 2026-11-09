@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Installation (sans clé API)
+        run: pip install -e ".[dev,llm,ui]"
+      - name: Lint
+        run: ruff check src tests scripts
+      - name: Tests
+        run: pytest
+      - name: Évaluation
+        run: territory-assistant evaluate
+      - name: Démonstration sans LLM
+        run: territory-assistant demo --no-llm --quiet

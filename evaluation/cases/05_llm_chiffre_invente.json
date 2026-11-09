@@ -1,0 +1,31 @@
+{
+  "case_id": "05_llm_chiffre_invente",
+  "description": "LLM simulé (sans réseau) qui invente un chiffre, puis cite un identifiant inexistant : la vérification doit rejeter les deux tentatives et revenir à la synthèse déterministe.",
+  "request": {
+    "question": "Quels éléments territoriaux doivent être examinés avant une étude d'aménagement dans cette zone ?",
+    "project_type": "aménagement",
+    "study_area": "data/sample/study_area.geojson",
+    "layers": ["data/sample/layers/cours_eau_fictifs.geojson"],
+    "documents": ["data/sample/documents/guide_fictif_etudes_preliminaires.md"]
+  },
+  "llm_script": [
+    {"reformulated_question": "Identifier les éléments hydrographiques à examiner dans la zone fictive avant l'étude.", "ambiguities": []},
+    {
+      "summary": "La zone est traversée par 4 500 m de cours d'eau, ce qui rend le projet sans risque.",
+      "interpretations": [{"text": "Le linéaire de 4 500 m impose une étude complète.", "based_on": ["C-002"]}],
+      "points_to_verify": [{"text": "Vérifier le statut des tracés.", "based_on": ["C-002"]}]
+    },
+    {
+      "summary": "La zone recoupe des tracés de cours d'eau dont le statut est à vérifier.",
+      "interpretations": [{"text": "Le tracé R1 est à examiner.", "based_on": ["C-999"]}],
+      "points_to_verify": [{"text": "Vérifier le statut des tracés.", "based_on": ["X-1"]}]
+    }
+  ],
+  "settings": {"llm_provider": "none"},
+  "expected": {
+    "status_in": ["à vérifier"],
+    "intersects": {"layer:cours_eau_fictifs": ["R1", "R3"]},
+    "within_buffer": {"layer:cours_eau_fictifs": ["R2"]},
+    "no_llm_content_kept": true
+  }
+}

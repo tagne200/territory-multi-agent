@@ -1,0 +1,11 @@
+{
+  "name": "Zone d'étude fictive de Valbrume",
+  "description": "Rectangle de 2000 m x 1500 m placé volontairement en mer.",
+  "provenance": "Données FICTIVES générées par scripts/generate_sample_data.py — aucune valeur réelle",
+  "date": "2026-11-09",
+  "license": "CC0-1.0 (données fictives créées pour ce prototype)",
+  "is_fictitious": true,
+  "known_limitations": [
+    "Zone fictive : aucune réalité géographique."
+  ]
+}

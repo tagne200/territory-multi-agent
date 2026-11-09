@@ -1,0 +1,18 @@
+{
+  "name": "Occupation du sol (fictive)",
+  "theme": "land_use",
+  "description": "Classes d'occupation du sol fictives.",
+  "provenance": "Données FICTIVES générées par scripts/generate_sample_data.py — aucune valeur réelle",
+  "date": "2026-11-09",
+  "scale_denominator": 10000,
+  "status": "fictif — démonstration",
+  "id_attribute": "id",
+  "label_attribute": "classe",
+  "expected_attributes": [
+    "classe"
+  ],
+  "is_fictitious": true,
+  "known_limitations": [
+    "Contient volontairement une géométrie invalide (L5) et une géométrie vide (L6)."
+  ]
+}

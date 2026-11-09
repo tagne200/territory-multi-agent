@@ -1,0 +1,11 @@
+NOTE FICTIVE — Couche « zones de vigilance inondation (fictives) »
+DOCUMENT FICTIF créé pour le prototype territory-multi-agent. Aucune valeur réelle.
+
+Méthode. La couche fictive des zones de vigilance a été produite en juin 2019 par une modélisation
+simplifiée imaginaire. Elle distingue trois niveaux d'aléa : fort, modéré et faible.
+
+Échelle et précision. La couche a été saisie à l'échelle du 1/25 000. Ses limites ne doivent pas être
+interprétées à l'échelle de la parcelle.
+
+Statut. La couche porte le statut « provisoire ». Elle n'a pas été mise à jour depuis 2019 et doit être
+comparée à une source officielle plus récente avant toute utilisation dans une étude.

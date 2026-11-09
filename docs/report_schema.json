@@ -1,0 +1,1295 @@
+{
+  "$defs": {
+    "AgentTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "agent": {
+          "title": "Agent",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "warning",
+            "error",
+            "skipped"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "duration_ms": {
+          "title": "Duration Ms",
+          "type": "number"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "agent",
+        "status",
+        "started_at",
+        "duration_ms",
+        "summary"
+      ],
+      "title": "AgentTrace",
+      "type": "object"
+    },
+    "Check": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "details": {
+          "default": "",
+          "title": "Details",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "passed"
+      ],
+      "title": "Check",
+      "type": "object"
+    },
+    "DocumentEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "excerpt": {
+          "title": "Excerpt",
+          "type": "string"
+        },
+        "excerpt_truncated": {
+          "default": false,
+          "title": "Excerpt Truncated",
+          "type": "boolean"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "matched_terms": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Terms",
+          "type": "array"
+        },
+        "related_themes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Themes",
+          "type": "array"
+        },
+        "suspicious_instructions": {
+          "default": false,
+          "title": "Suspicious Instructions",
+          "type": "boolean"
+        },
+        "sent_to_llm": {
+          "default": false,
+          "title": "Sent To Llm",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "source_id",
+        "filename",
+        "title",
+        "chunk_id",
+        "excerpt",
+        "score"
+      ],
+      "title": "DocumentEvidence",
+      "type": "object"
+    },
+    "LayerMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "layer_id": {
+          "title": "Layer Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "theme": {
+          "title": "Theme",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "description": {
+          "default": "non renseignée",
+          "title": "Description",
+          "type": "string"
+        },
+        "load_status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Load Status",
+          "type": "string"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "geometry_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Geometry Types",
+          "type": "array"
+        },
+        "feature_count_total": {
+          "default": 0,
+          "title": "Feature Count Total",
+          "type": "integer"
+        },
+        "feature_count_used": {
+          "default": 0,
+          "title": "Feature Count Used",
+          "type": "integer"
+        },
+        "crs_original": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crs Original"
+        },
+        "crs_metric": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crs Metric"
+        },
+        "reprojected": {
+          "default": false,
+          "title": "Reprojected",
+          "type": "boolean"
+        },
+        "invalid_geometries_fixed": {
+          "default": 0,
+          "title": "Invalid Geometries Fixed",
+          "type": "integer"
+        },
+        "empty_geometries_removed": {
+          "default": 0,
+          "title": "Empty Geometries Removed",
+          "type": "integer"
+        },
+        "attributes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Attributes",
+          "type": "array"
+        },
+        "missing_attributes": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Missing Attributes",
+          "type": "object"
+        },
+        "id_attribute": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Id Attribute"
+        },
+        "label_attribute": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label Attribute"
+        },
+        "scale_denominator": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scale Denominator"
+        },
+        "date": {
+          "default": "non renseignée",
+          "title": "Date",
+          "type": "string"
+        },
+        "status": {
+          "default": "non renseignée",
+          "title": "Status",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "layer_id",
+        "source_id",
+        "name",
+        "theme",
+        "filename",
+        "load_status"
+      ],
+      "title": "LayerMetadata",
+      "type": "object"
+    },
+    "Metric": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "crs": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "CRS dans lequel la mesure a été calculée",
+          "title": "Crs"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "unit"
+      ],
+      "title": "Metric",
+      "type": "object"
+    },
+    "Recommendation": {
+      "additionalProperties": false,
+      "properties": {
+        "recommendation_id": {
+          "title": "Recommendation Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "point_to_verify",
+            "human_verification",
+            "data_request"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        },
+        "based_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Based On",
+          "type": "array"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "generated_by": {
+          "default": "rules",
+          "enum": [
+            "rules",
+            "llm"
+          ],
+          "title": "Generated By",
+          "type": "string"
+        },
+        "validation_status": {
+          "const": "à valider par un spécialiste",
+          "default": "à valider par un spécialiste",
+          "title": "Validation Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "recommendation_id",
+        "kind",
+        "text",
+        "rationale"
+      ],
+      "title": "Recommendation",
+      "type": "object"
+    },
+    "ScopingResult": {
+      "additionalProperties": false,
+      "properties": {
+        "original_question": {
+          "title": "Original Question",
+          "type": "string"
+        },
+        "reformulated_question": {
+          "title": "Reformulated Question",
+          "type": "string"
+        },
+        "project_type": {
+          "title": "Project Type",
+          "type": "string"
+        },
+        "study_area_provided": {
+          "title": "Study Area Provided",
+          "type": "boolean"
+        },
+        "layers_requested": {
+          "title": "Layers Requested",
+          "type": "integer"
+        },
+        "layer_themes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Layer Themes",
+          "type": "object"
+        },
+        "documents_requested": {
+          "title": "Documents Requested",
+          "type": "integer"
+        },
+        "missing_information": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Information",
+          "type": "array"
+        },
+        "blocking_issues": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocking Issues",
+          "type": "array"
+        },
+        "is_valid": {
+          "title": "Is Valid",
+          "type": "boolean"
+        },
+        "generated_by": {
+          "default": "rules",
+          "enum": [
+            "rules",
+            "llm"
+          ],
+          "title": "Generated By",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "original_question",
+        "reformulated_question",
+        "project_type",
+        "study_area_provided",
+        "layers_requested",
+        "documents_requested",
+        "is_valid"
+      ],
+      "title": "ScopingResult",
+      "type": "object"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "description": "Entrée du registre des sources.",
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "gis_layer",
+            "study_area",
+            "document",
+            "user_input"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "provenance": {
+          "default": "non renseignée",
+          "title": "Provenance",
+          "type": "string"
+        },
+        "date_or_version": {
+          "default": "non renseignée",
+          "title": "Date Or Version",
+          "type": "string"
+        },
+        "license": {
+          "default": "non renseignée",
+          "title": "License",
+          "type": "string"
+        },
+        "crs": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crs"
+        },
+        "loaded_at": {
+          "format": "date-time",
+          "title": "Loaded At",
+          "type": "string"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "processing": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Processing",
+          "type": "array"
+        },
+        "known_limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Known Limitations",
+          "type": "array"
+        },
+        "is_fictitious": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Is Fictitious"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_id",
+        "kind",
+        "filename",
+        "title",
+        "loaded_at"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    },
+    "SpatialFinding": {
+      "additionalProperties": false,
+      "description": "Constat calculé : relation entre une entité d'une couche et la zone d'étude.",
+      "properties": {
+        "finding_id": {
+          "title": "Finding Id",
+          "type": "string"
+        },
+        "layer_id": {
+          "title": "Layer Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "layer_name": {
+          "title": "Layer Name",
+          "type": "string"
+        },
+        "theme": {
+          "title": "Theme",
+          "type": "string"
+        },
+        "feature_id": {
+          "title": "Feature Id",
+          "type": "string"
+        },
+        "feature_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Feature Label"
+        },
+        "attributes": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "relation": {
+          "enum": [
+            "intersects",
+            "touches_boundary",
+            "within_buffer"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "geometry_type": {
+          "title": "Geometry Type",
+          "type": "string"
+        },
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/Metric"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "distance_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distance M"
+        },
+        "operation": {
+          "title": "Operation",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Parameters",
+          "type": "object"
+        },
+        "crs_transformation": {
+          "title": "Crs Transformation",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "finding_id",
+        "layer_id",
+        "source_id",
+        "layer_name",
+        "theme",
+        "feature_id",
+        "relation",
+        "geometry_type",
+        "operation",
+        "crs_transformation"
+      ],
+      "title": "SpatialFinding",
+      "type": "object"
+    },
+    "Statement": {
+      "additionalProperties": false,
+      "description": "Affirmation de la synthèse, rattachée à ses sources.",
+      "properties": {
+        "statement_id": {
+          "title": "Statement Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "computed_fact",
+            "document_content",
+            "interpretation",
+            "missing_information"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "based_on": {
+          "description": "Identifiants de constats SIG / extraits / affirmations",
+          "items": {
+            "type": "string"
+          },
+          "title": "Based On",
+          "type": "array"
+        },
+        "generated_by": {
+          "default": "rules",
+          "enum": [
+            "rules",
+            "llm"
+          ],
+          "title": "Generated By",
+          "type": "string"
+        }
+      },
+      "required": [
+        "statement_id",
+        "category",
+        "text"
+      ],
+      "title": "Statement",
+      "type": "object"
+    },
+    "StudyArea": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "crs_original": {
+          "title": "Crs Original",
+          "type": "string"
+        },
+        "crs_metric": {
+          "title": "Crs Metric",
+          "type": "string"
+        },
+        "area_m2": {
+          "title": "Area M2",
+          "type": "number"
+        },
+        "area_ha": {
+          "title": "Area Ha",
+          "type": "number"
+        },
+        "bbox_wgs84": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox Wgs84",
+          "type": "array"
+        },
+        "centroid_wgs84": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Centroid Wgs84",
+          "type": "array"
+        },
+        "n_input_features": {
+          "title": "N Input Features",
+          "type": "integer"
+        },
+        "geometry_wgs84": {
+          "additionalProperties": true,
+          "title": "Geometry Wgs84",
+          "type": "object"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_id",
+        "name",
+        "crs_original",
+        "crs_metric",
+        "area_m2",
+        "area_ha",
+        "bbox_wgs84",
+        "centroid_wgs84",
+        "n_input_features",
+        "geometry_wgs84"
+      ],
+      "title": "StudyArea",
+      "type": "object"
+    },
+    "Uncertainty": {
+      "additionalProperties": false,
+      "properties": {
+        "uncertainty_id": {
+          "title": "Uncertainty Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "data_quality",
+            "crs",
+            "scale",
+            "date",
+            "status",
+            "provenance",
+            "license",
+            "coverage",
+            "method",
+            "document",
+            "llm",
+            "security"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "critical"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "related_source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "uncertainty_id",
+        "category",
+        "severity",
+        "description"
+      ],
+      "title": "Uncertainty",
+      "type": "object"
+    },
+    "VerificationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "conforme",
+            "à vérifier",
+            "non conforme"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/Check"
+          },
+          "title": "Checks",
+          "type": "array"
+        },
+        "unsupported_statement_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsupported Statement Ids",
+          "type": "array"
+        },
+        "unknown_reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unknown Reference Ids",
+          "type": "array"
+        },
+        "metric_mismatches": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Metric Mismatches",
+          "type": "array"
+        },
+        "excerpt_mismatches": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Excerpt Mismatches",
+          "type": "array"
+        },
+        "forbidden_language": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Forbidden Language",
+          "type": "array"
+        },
+        "added_uncertainties": {
+          "items": {
+            "$ref": "#/$defs/Uncertainty"
+          },
+          "title": "Added Uncertainties",
+          "type": "array"
+        },
+        "regeneration_requested": {
+          "default": false,
+          "title": "Regeneration Requested",
+          "type": "boolean"
+        },
+        "feedback": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Feedback",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "VerificationResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Rapport final. Les sections suivent l'ordre de lecture recommandé.",
+  "properties": {
+    "analysis_id": {
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "tool_version": {
+      "title": "Tool Version",
+      "type": "string"
+    },
+    "mode": {
+      "title": "Mode",
+      "type": "string"
+    },
+    "llm_model": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Llm Model"
+    },
+    "status": {
+      "enum": [
+        "contrôles automatiques passés",
+        "à vérifier",
+        "bloqué"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    },
+    "project_type": {
+      "title": "Project Type",
+      "type": "string"
+    },
+    "parameters": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Parameters",
+      "type": "object"
+    },
+    "scoping": {
+      "$ref": "#/$defs/ScopingResult"
+    },
+    "study_area": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StudyArea"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceReference"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "layers": {
+      "items": {
+        "$ref": "#/$defs/LayerMetadata"
+      },
+      "title": "Layers",
+      "type": "array"
+    },
+    "spatial_findings": {
+      "items": {
+        "$ref": "#/$defs/SpatialFinding"
+      },
+      "title": "Spatial Findings",
+      "type": "array"
+    },
+    "document_evidence": {
+      "items": {
+        "$ref": "#/$defs/DocumentEvidence"
+      },
+      "title": "Document Evidence",
+      "type": "array"
+    },
+    "document_search_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Document Search Note"
+    },
+    "summary": {
+      "default": "",
+      "title": "Summary",
+      "type": "string"
+    },
+    "summary_generated_by": {
+      "default": "rules",
+      "enum": [
+        "rules",
+        "llm"
+      ],
+      "title": "Summary Generated By",
+      "type": "string"
+    },
+    "statements": {
+      "items": {
+        "$ref": "#/$defs/Statement"
+      },
+      "title": "Statements",
+      "type": "array"
+    },
+    "missing_information": {
+      "items": {
+        "$ref": "#/$defs/Statement"
+      },
+      "title": "Missing Information",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "$ref": "#/$defs/Uncertainty"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "points_to_verify": {
+      "items": {
+        "$ref": "#/$defs/Recommendation"
+      },
+      "title": "Points To Verify",
+      "type": "array"
+    },
+    "human_verifications": {
+      "items": {
+        "$ref": "#/$defs/Recommendation"
+      },
+      "title": "Human Verifications",
+      "type": "array"
+    },
+    "verification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/VerificationResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "agent_trace": {
+      "items": {
+        "$ref": "#/$defs/AgentTrace"
+      },
+      "title": "Agent Trace",
+      "type": "array"
+    },
+    "disclaimer": {
+      "minLength": 20,
+      "title": "Disclaimer",
+      "type": "string"
+    }
+  },
+  "required": [
+    "analysis_id",
+    "created_at",
+    "tool_version",
+    "mode",
+    "status",
+    "question",
+    "project_type",
+    "scoping",
+    "disclaimer"
+  ],
+  "title": "AnalysisReport",
+  "type": "object"
+}
