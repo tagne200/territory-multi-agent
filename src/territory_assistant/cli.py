@@ -81,7 +81,13 @@ def _run(request: AnalysisRequest, settings: Settings, out_dir: Path, quiet: boo
 def main(argv: list[str] | None = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")  # accents sous Windows
-    parser = argparse.ArgumentParser(prog="territory-assistant", description=__doc__.split("\n")[0])
+    parser = argparse.ArgumentParser(
+        prog="territory-assistant",
+        description=(
+            "Assistant multi-agents d'analyse préliminaire des contraintes territoriales. "
+            "Prototype : résultats à vérifier par un spécialiste."
+        ),
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     common = argparse.ArgumentParser(add_help=False)
@@ -94,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     common.add_argument(
         "--metric-crs", help="CRS métrique imposé, ex. EPSG:2154 (défaut : UTM auto)"
     )
-    common.add_argument("--quiet", action="store_true")
+    common.add_argument("--quiet", action="store_true", help="N'affiche pas la trace des agents")
 
     sub.add_parser("demo", parents=[common], help="Scénario fictif de démonstration")
 
@@ -102,8 +108,8 @@ def main(argv: list[str] | None = None) -> int:
     an.add_argument("--area", required=True, help="Zone d'étude (GeoJSON ou GeoPackage)")
     an.add_argument("--layers", nargs="*", default=[], help="Fichiers ou répertoires de couches")
     an.add_argument("--docs", nargs="*", default=[], help="Fichiers ou répertoires de documents")
-    an.add_argument("--question", required=True)
-    an.add_argument("--project-type")
+    an.add_argument("--question", required=True, help="Question posée (1 à 2000 caractères)")
+    an.add_argument("--project-type", help="Type de projet (facultatif, signalé s'il manque)")
     an.add_argument(
         "--root",
         action="append",
@@ -112,11 +118,15 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     ev = sub.add_parser("evaluate", help="Exécute le jeu d'évaluation (mode sans LLM)")
-    ev.add_argument("--cases", default="evaluation/cases")
-    ev.add_argument("--out", default="reports/evaluation_results.json")
+    ev.add_argument("--cases", default="evaluation/cases", help="Répertoire des cas (*.json)")
+    ev.add_argument(
+        "--out", default="reports/evaluation_results.json", help="Fichier de résultats JSON"
+    )
 
     sc = sub.add_parser("schema", help="Écrit le JSON Schema du rapport")
-    sc.add_argument("path", nargs="?", default="docs/report_schema.json")
+    sc.add_argument(
+        "path", nargs="?", default="docs/report_schema.json", help="Fichier de sortie du schéma"
+    )
 
     args = parser.parse_args(argv)
     try:

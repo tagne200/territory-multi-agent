@@ -18,7 +18,7 @@ restent dans le **Backlog**.
 | 6 | Validation des schémas | Modèles Pydantic `extra="forbid"` ; JSON Schema publié ; sortie LLM hors schéma rejetée | `territory-assistant schema` ; `test_invalid_llm_output_falls_back_to_rules` |
 | 7 | Tests | Suite pytest verte sans clé API ; lint Ruff propre ; CI GitHub Actions | `pytest` ; `ruff check` ; onglet *Actions* |
 | 8 | Interface / CLI | `territory-assistant demo` produit JSON, Markdown, PNG, GeoJSON ; Streamlit affiche le bandeau et les avertissements avant les recommandations | `tests/test_ui.py`, `test_cli_demo_without_api_key` |
-| 9 | Documentation | README + 5 documents ; distinction fictif / réel / calcul / LLM / recommandation | relecture |
+| 9 | Documentation | README, index `docs/README.md`, guides d'installation, d'utilisation, de configuration et développeur, formats, architecture, sécurité, limites, évaluation, présentation ; distinction fictif / réel / calcul / LLM / recommandation | relecture ; liens vérifiés |
 | 10 | Démonstration finale | Exemple généré par le système versionné ; évaluation 6/6 | `examples/` |
 | B1 | API FastAPI | `POST /analyses` renvoie un `AnalysisReport` valide | à faire |
 | B2 | Données ouvertes réelles | Une zone réelle documentée (source, date, licence, CRS) | à faire |

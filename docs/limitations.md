@@ -46,16 +46,8 @@
 
 ## Sécurité et robustesse
 
-| Risque | Protection |
-|---|---|
-| Fichier trop volumineux / vide | `TA_MAX_FILE_MB`, 10 Mo pour les documents ; refus des fichiers vides |
-| Trop d'entités | comptage avant lecture (`pyogrio.read_info`) |
-| Chemin inattendu, `..`, lien | résolution puis comparaison aux répertoires autorisés |
-| Extension inattendue | liste blanche |
-| Fichier corrompu / mal encodé / binaire | `DataReadError`, couche ou document isolé, signalé dans le rapport |
-| Géométrie vide ou invalide | suppression ou `make_valid`, signalées |
-| CRS absent / incohérent | refus explicite (`CRSError`) |
-| Sortie LLM hors schéma | JSON Schema côté API + Pydantic `extra="forbid"` côté prototype |
-| Injection dans un document | détection, exclusion, balises `<donnees>`, aucun outil pour le LLM |
-| Fuite de clé | clé lue par le SDK depuis l'environnement ; `.env` ignoré par Git ; `.env.example` sans secret |
-| Fichiers téléversés (Streamlit) | noms assainis, dossier de session dédié sous `reports/uploads/` (non versionné) |
+Les menaces considérées, les protections et les tests associés sont détaillés dans
+[security.md](security.md). Points d'attention :
+- la détection d'injection repose sur des motifs et n'est pas exhaustive ;
+- l'interface Streamlit est prévue pour un usage local uniquement ;
+- les fichiers ne sont pas analysés par un antivirus.

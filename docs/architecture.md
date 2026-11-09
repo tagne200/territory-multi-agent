@@ -165,7 +165,7 @@ Principes structurants :
 
 ```
 territory-multi-agent/
-  README.md  LICENSE  pyproject.toml  .env.example  .gitignore
+  README.md  LICENSE  pyproject.toml  .env.example  .gitignore  .gitattributes
   .github/workflows/ci.yml
   src/territory_assistant/
     __init__.py  config.py  errors.py  safety.py  models.py  source_registry.py
@@ -181,7 +181,10 @@ territory-multi-agent/
   evaluation/cases/*.json
   examples/demo_valbrume/  (sorties réelles du scénario)  evaluation_results.json
   tests/  test_spatial.py test_documents.py test_agents.py test_pipeline.py test_ui.py
-  docs/   architecture.md data_sources.md evaluation.md kanban.md limitations.md report_schema.json
+  docs/   README.md (index) installation.md user_guide.md configuration.md data_formats.md
+          architecture.md data_sources.md evaluation.md security.md limitations.md
+          developer_guide.md kanban.md presentation.md report_schema.json
+  CONTRIBUTING.md  CHANGELOG.md
   reports/.gitkeep
 ```
 
